@@ -1,0 +1,217 @@
+bfs=====================================
+
+import matplotlib.pyplot as pt
+import networkx as nx
+
+g={
+  '5' : ['3','7'],
+  '3' : ['2', '4'],
+  '7' : ['8'],
+  '2' : [],
+  '4' : ['8'],
+  '8' : []
+
+}
+
+visisted=[]
+queue=[]
+
+def bfs(visisted,queue,node):
+    visisted.append(node)
+    queue.append(node)
+
+    while queue:
+        m=queue.pop(0)
+        print(m,end='')
+
+    for neighbour in g[m]:
+        if neighbour not in visisted:
+            visisted.append(neighbour)
+            queue.append(neighbour)
+        
+                
+
+print("bfs")
+dfs(visited,queue, '5')
+
+G=nx.Graph(g)
+pos=nx.spring_layout(G)
+nx.draw(G,pos,with_labels=True)
+pt.show()
+
+dfs=======================================================
+
+import matplotlib.pyplot as pt
+import networkx as nx
+
+g={
+  '5' : ['3','7'],
+  '3' : ['2', '4'],
+  '7' : ['8'],
+  '2' : [],
+  '4' : ['8'],
+  '8' : []
+
+}
+
+visisted=set()
+def dfs(visited,queue,node):
+    if node not in visited:
+        print(node)
+        visisted.add(node)
+        for neighbour in g[node]:
+            dfs(visisted,queue,n)
+        
+                
+
+print("dfs")
+dfs(visited,queue, '5')
+
+G=nx.Graph(g)
+pos=nx.spring_layout(G)
+nx.draw(G,pos,with_labels=True)
+pt.show()
+
+tower of honai=========================================
+
+def t_o_h(disks,source,auxiliary,target):
+    if(disks==1):
+        print('move disk from rod{} to rod{}.'.format(source,target))
+        return
+    t_o_h(disks-1,source,auxiliary,target)
+    print('move disk{} from rod{} to rod{}.'.format(disks,source,target))
+    t_o_h(disks-1,source,auxiliary,target)
+disks=int(input('enter:'))
+t_o_h(disks,'A','B','C')
+
+chat bot====================================================
+
+print("hi")
+print("how are you?")
+print("what is your name?")
+print("are you working?")
+print("what did you do yesterday?");
+print("quit")
+
+while True:
+    q=input("enter u r question:")
+    q=q.lower()
+
+    if q in ['hi']:
+        print("hellow")
+    elif q in ['how are you?']:
+        print("faine")
+    elif q in ['what is your name?']:
+        print('my name is pcb')
+        name=input("enter u r name:")
+        print("nice to meet u",name)
+    elif q in ['are you working?']:
+        print('yes i am working in rls')
+    elif q in ['what did you do yesterday?']:
+        print("i played bgmi")
+    elif q in ['quit']:
+        break
+    else:
+        print('i can not understand')
+        
+Linear regrassion==========================================
+
+import matplotlib.pyplot as pt
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+x=np.array([1,2,3,4,5]).reshape(-1,1)
+y=np.array([2,3,4,5,6])
+
+model=LinearRegression()
+model.fit(x,y)
+
+y_p=model.predict(x)
+
+pt.scatter(x,y,color="red",label="actual data")
+pt.plot(x,y_p,color="Blue" ,label="LineraRegression")
+pt.legend()
+pt.xlabel('x')
+pt.ylabel('y')
+pt.show()
+
+print("intercept",model.intercept_)
+print("slof",model.coef_[0])
+
+hangman game============================================
+
+import time
+from time import sleep
+n=input('enter u r name:')
+print("welcome",name)
+time.sleep(1)
+print('start')
+time.sleep(0.5)
+word="ok"
+wrd=''
+chance=6
+while chance > 0:
+    failed=0
+    for char in word:
+        if char in wrd:
+            print(char,end='')
+        else:
+            print('_',end='')
+            failed+=1
+    print('')
+    if failed==0:
+        print('u won the game')
+        break
+    guess=input('enter u r guess')
+    wrd+=guess
+    if guess not in word:
+        print(chance,'try again')
+    if chance==0:
+        print('u lose the game')
+
+time serise==========================================================
+import numpy as np
+import matplotlib.pyplot as pt
+
+np.random.seed(0)
+ts=np.cumsum(np.random.randn(100))+50
+
+def ma(data,window_size):
+    return np.convolve(data,np.ones(window_size)/window_size,mode='valide')
+
+window_size=5
+ma1=ma(ts,window_size)
+pt.figure(figsize=(10,5))
+pt.plot(ts,label='original time series')
+pt.plot(range(window_size-1,len(ma1)+window_size-1),ma1,label='moving avarage',color='yellow')
+pt.xlabel('time')
+pt.ylabel('value')
+pt.legend()
+pt.show()
+
+kmeans========================================================
+
+import numpy as np 
+import matplotlib.pyplot as pt
+#form sklearn.datasets import make_blobs
+from sklearn.datasets import make_blobs
+#form sklearn.cluster import KMeans
+from sklearn.cluster import KMeans
+
+x,_=make_blobs(n_samples=600,centers=4,cluster_std=0.60,random_state=0)
+kmeans=KMeans(n_clusters=4)
+kmeans.fit(x)
+
+y=kmeans.predict(x)
+
+pt.scatter(x[:,0],x[:,1],c=y,s=60,cmap='viridis')
+clusters=kmeans.cluster_centers_
+pt.scatter(centers[:,0],centers[:,1],c='red',s=200,alpha=0.75)
+pt.xlabel('feature1')
+pt.ylabel('feature2')
+pt.show()
+        
+    
+
+
+
